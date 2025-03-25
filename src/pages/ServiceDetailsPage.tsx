@@ -89,7 +89,7 @@ const services: Service[] = [
     description: 'Traditional firewood platforms with improved efficiency and reduced environmental impact.',
     fullDescription: [
       'Our Conventional Firewood Platforms offer a traditional approach to cremation while incorporating design improvements that enhance efficiency and reduce environmental impact.',
-      'We've optimized airflow and wood placement to ensure more complete combustion, reducing the amount of wood needed while maintaining the traditional ceremonial experience.',
+      "We've optimized airflow and wood placement to ensure more complete combustion, reducing the amount of wood needed while maintaining the traditional ceremonial experience.",
       'Our platforms are constructed with quality materials and maintained regularly to ensure safety, dignity, and respect for both the departed and attending family members.'
     ],
     icon: <CloudRain className="h-6 w-6" />,
