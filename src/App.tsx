@@ -19,6 +19,7 @@ import ContactPage from "./pages/ContactPage";
 import ServiceDetailsPage from "./pages/ServiceDetailsPage";
 import PaymentPage from "./pages/PaymentPage";
 import NotFound from "./pages/NotFound";
+import Index from "./pages/Index";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<HomePage />} />
+        <Route path="/index" element={<Index />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/services/:id" element={<ServiceDetailsPage />} />
