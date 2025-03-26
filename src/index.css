@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -417,4 +418,111 @@
   42.3076923077% { transform: translateX(14vw) translateY(-17vh) scale(0.55); }
   46.1538461538% { transform: translateX(36vw) translateY(31vh) scale(0.67); }
   50% { transform: translateX(42vw) translateY(29vh) scale(0.43); }
-  53.8461538
+  53.8461538462% { transform: translateX(39vw) translateY(-36vh) scale(0.78); }
+  57.6923076923% { transform: translateX(32vw) translateY(-14vh) scale(0.27); }
+  61.5384615385% { transform: translateX(12vw) translateY(-41vh) scale(0.52); }
+  65.3846153846% { transform: translateX(46vw) translateY(4vh) scale(0.8); }
+  69.2307692308% { transform: translateX(35vw) translateY(-36vh) scale(0.33); }
+  73.0769230769% { transform: translateX(35vw) translateY(9vh) scale(0.92); }
+  76.9230769231% { transform: translateX(5vw) translateY(41vh) scale(0.97); }
+  80.7692307692% { transform: translateX(4vw) translateY(19vh) scale(0.83); }
+  84.6153846154% { transform: translateX(-48vw) translateY(-43vh) scale(0.78); }
+  88.4615384615% { transform: translateX(4vw) translateY(19vh) scale(0.58); }
+  92.3076923077% { transform: translateX(-19vw) translateY(8vh) scale(0.96); }
+  96.1538461538% { transform: translateX(48vw) translateY(45vh) scale(0.54); }
+  100% { transform: translateX(28vw) translateY(41vh) scale(0.32); }
+}
+
+/* Define missing keyframes for the remaining fireflies */
+@keyframes move8 {
+  0% { transform: translateX(15vw) translateY(15vh) scale(0.53); }
+  10% { transform: translateX(-25vw) translateY(-10vh) scale(0.62); }
+  20% { transform: translateX(30vw) translateY(30vh) scale(0.75); }
+  30% { transform: translateX(-20vw) translateY(10vh) scale(0.43); }
+  40% { transform: translateX(5vw) translateY(-25vh) scale(0.68); }
+  50% { transform: translateX(-30vw) translateY(-30vh) scale(0.56); }
+  60% { transform: translateX(20vw) translateY(20vh) scale(0.72); }
+  70% { transform: translateX(-10vw) translateY(35vh) scale(0.45); }
+  80% { transform: translateX(25vw) translateY(-20vh) scale(0.82); }
+  90% { transform: translateX(-15vw) translateY(-5vh) scale(0.64); }
+  100% { transform: translateX(10vw) translateY(10vh) scale(0.58); }
+}
+
+@keyframes move9 {
+  0% { transform: translateX(-20vw) translateY(20vh) scale(0.65); }
+  10% { transform: translateX(15vw) translateY(-15vh) scale(0.48); }
+  20% { transform: translateX(-25vw) translateY(-25vh) scale(0.75); }
+  30% { transform: translateX(20vw) translateY(10vh) scale(0.57); }
+  40% { transform: translateX(-10vw) translateY(30vh) scale(0.84); }
+  50% { transform: translateX(30vw) translateY(-20vh) scale(0.63); }
+  60% { transform: translateX(-15vw) translateY(-30vh) scale(0.52); }
+  70% { transform: translateX(25vw) translateY(15vh) scale(0.76); }
+  80% { transform: translateX(-30vw) translateY(25vh) scale(0.45); }
+  90% { transform: translateX(10vw) translateY(-10vh) scale(0.68); }
+  100% { transform: translateX(-5vw) translateY(-5vh) scale(0.58); }
+}
+
+@keyframes move10 {
+  0% { transform: translateX(10vw) translateY(10vh) scale(0.75); }
+  10% { transform: translateX(-20vw) translateY(-10vh) scale(0.58); }
+  20% { transform: translateX(30vw) translateY(20vh) scale(0.63); }
+  30% { transform: translateX(-10vw) translateY(30vh) scale(0.47); }
+  40% { transform: translateX(25vw) translateY(-25vh) scale(0.82); }
+  50% { transform: translateX(-30vw) translateY(-15vh) scale(0.56); }
+  60% { transform: translateX(15vw) translateY(5vh) scale(0.67); }
+  70% { transform: translateX(-5vw) translateY(35vh) scale(0.75); }
+  80% { transform: translateX(20vw) translateY(-30vh) scale(0.48); }
+  90% { transform: translateX(-25vw) translateY(-5vh) scale(0.63); }
+  100% { transform: translateX(5vw) translateY(20vh) scale(0.71); }
+}
+
+@keyframes move11 {
+  0% { transform: translateX(-15vw) translateY(25vh) scale(0.48); }
+  10% { transform: translateX(25vw) translateY(-15vh) scale(0.67); }
+  20% { transform: translateX(-20vw) translateY(-20vh) scale(0.56); }
+  30% { transform: translateX(10vw) translateY(30vh) scale(0.78); }
+  40% { transform: translateX(-30vw) translateY(10vh) scale(0.43); }
+  50% { transform: translateX(30vw) translateY(-30vh) scale(0.68); }
+  60% { transform: translateX(-10vw) translateY(-10vh) scale(0.52); }
+  70% { transform: translateX(20vw) translateY(20vh) scale(0.65); }
+  80% { transform: translateX(-25vw) translateY(15vh) scale(0.74); }
+  90% { transform: translateX(15vw) translateY(-25vh) scale(0.47); }
+  100% { transform: translateX(-5vw) translateY(5vh) scale(0.62); }
+}
+
+@keyframes move12 {
+  0% { transform: translateX(20vw) translateY(20vh) scale(0.58); }
+  10% { transform: translateX(-10vw) translateY(-20vh) scale(0.73); }
+  20% { transform: translateX(25vw) translateY(-10vh) scale(0.46); }
+  30% { transform: translateX(-20vw) translateY(25vh) scale(0.82); }
+  40% { transform: translateX(5vw) translateY(-30vh) scale(0.57); }
+  50% { transform: translateX(-25vw) translateY(5vh) scale(0.64); }
+  60% { transform: translateX(30vw) translateY(30vh) scale(0.73); }
+  70% { transform: translateX(-15vw) translateY(-15vh) scale(0.52); }
+  80% { transform: translateX(10vw) translateY(15vh) scale(0.68); }
+  90% { transform: translateX(-30vw) translateY(-25vh) scale(0.47); }
+  100% { transform: translateX(15vw) translateY(10vh) scale(0.75); }
+}
+
+/* Add drift and flash animations which were referenced but not defined */
+@keyframes drift {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes flash {
+  0%, 30%, 100% { opacity: 0; box-shadow: 0 0 0vw 0vw yellow; }
+  5%, 20% { opacity: 0.6; box-shadow: 0 0 2vw 0.4vw yellow; }
+}
+
+/* Shimmer button effect */
+.shimmer-button {
+  background-size: 200% 100%;
+  background-image: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.2) 25%, transparent 50%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
