@@ -13,40 +13,72 @@ import { cn } from '@/lib/utils';
 interface Donor {
   id: number;
   name: string;
-  amount: number;
-  date: string;
-  category: 'platinum' | 'gold' | 'silver' | 'individual';
+  category: 'Chief Patron' | 'Patron Cum Trustee' | 'Donor Cum Trustee' | 'Donors';
 }
 
 // Sample donor data
 const donors: Donor[] = [
   // Platinum Donors
-  { id: 1, name: 'Green Earth Foundation', amount: 2500000, date: '2023-01-15', category: 'platinum' },
-  { id: 2, name: 'Sustainable Futures Corp', amount: 2000000, date: '2023-02-20', category: 'platinum' },
-  { id: 3, name: 'EcoLife Trust', amount: 1800000, date: '2023-03-05', category: 'platinum' },
+  { id: 1, name: 'Kallam Satish Reddy', category: 'Chief Patron' },
+  { id: 2, name: 'J. Ranjith Rao', category: 'Chief Patron' },
   
   // Gold Donors
-  { id: 4, name: 'Nature First Initiative', amount: 1000000, date: '2023-02-10', category: 'gold' },
-  { id: 5, name: 'Mohan & Family Charitable Trust', amount: 800000, date: '2023-03-12', category: 'gold' },
-  { id: 6, name: 'Harmony Foundation', amount: 750000, date: '2023-04-18', category: 'gold' },
-  { id: 7, name: 'GreenTech Industries', amount: 700000, date: '2023-05-22', category: 'gold' },
+  { id: 3, name: 'Guda Krishna Prasad', category: 'Patron Cum Trustee' },
+  { id: 4, name: 'Guda Krishna Prasad', category: 'Patron Cum Trustee' },
   
   // Silver Donors
-  { id: 8, name: 'Sharma Family Trust', amount: 500000, date: '2023-01-30', category: 'silver' },
-  { id: 9, name: 'Progressive Community Group', amount: 450000, date: '2023-02-14', category: 'silver' },
-  { id: 10, name: 'Eco Warriors Club', amount: 400000, date: '2023-03-25', category: 'silver' },
-  { id: 11, name: 'United Green Alliance', amount: 350000, date: '2023-04-10', category: 'silver' },
-  { id: 12, name: 'Clean Earth Association', amount: 300000, date: '2023-05-15', category: 'silver' },
+  { id: 5, name: 'Amarjyot Singh', category: 'Donor Cum Trustee' },
+  { id: 6, name: 'Anil Dundoo',  category: 'Donor Cum Trustee' },
+  { id: 7, name: 'Anil Kumar Kedia', category: 'Donor Cum Trustee' },
+  { id: 8, name: 'Ashok Kapoor', category: 'Donor Cum Trustee' },
+  { id: 9, name: 'Avanindra Kumar D.', category: 'Donor Cum Trustee' },
+  { id: 10, name: 'Bhupinder Talwar', category: 'Donor Cum Trustee' },
+  { id: 11, name: 'Dr. Gokhale, A.G.K.', category: 'Donor Cum Trustee' },
+  { id: 12, name: 'Gowra Srinivas', category: 'Donor Cum Trustee' },
+  { id: 13, name: 'Dr. Gurava Reddy A. V.', category: 'Donor Cum Trustee' },
+  { id: 14, name: 'Harish Kumar', category: 'Donor Cum Trustee' },
+  { id: 15, name: 'Hiralal Thakral', category: 'Donor Cum Trustee' },
+  { id: 16, name: 'Dr. Kasu Prasad Reddy', category: 'Donor Cum Trustee' },
+  { id: 17, name: 'Kohli T.S.', category: 'Donor Cum Trustee' },
+  { id: 18, name: 'Malla Reddy C.', category: 'Donor Cum Trustee' },
+  { id: 19, name: 'Manjeet Singh Gandhi', category: 'Donor Cum Trustee' },
+  { id: 20, name: 'ManMohan Kanodia', category: 'Donor Cum Trustee' },
+  { id: 21, name: 'Dr. Mohana Vamsy Ch.', category: 'Donor Cum Trustee' },
+  { id: 22, name: 'Murti TVR', category: 'Donor Cum Trustee' },
+  { id: 23, name: 'Narang V. S.', category: 'Donor Cum Trustee' },
+  { id: 24, name: 'Narender Gauri', category: 'Donor Cum Trustee' },
+  { id: 25, name: 'Dr. Narsaiah B.', category: 'Donor Cum Trustee' },
+  { id: 26, name: 'Pradeep Ramrakhyani', category: 'Donor Cum Trustee' },
+  { id: 27, name: 'Rajanarender B.', category: 'Donor Cum Trustee' },
+  { id: 28, name: 'Rajesh Malik', category: 'Donor Cum Trustee' },
+  { id: 29, name: 'Rajendra Prasad V.', category: 'Donor Cum Trustee' },
+  { id: 30, name: 'Ramesh Malani', category: 'Donor Cum Trustee' },
+  { id: 31, name: 'Ramesh P. R.', category: 'Donor Cum Trustee' },
+  { id: 32, name: 'Ranjan Sood', category: 'Donor Cum Trustee' },
+  { id: 33, name: 'Dr. Rao T.B.', category: 'Donor Cum Trustee' },
+  { id: 34, name: 'Smt. Ratna Rao', category: 'Donor Cum Trustee' },
+  { id: 35, name: 'Sanjay Dugar', category: 'Donor Cum Trustee' },
+  { id: 36, name: 'Shyam Chandak', category: 'Donor Cum Trustee' },
+  { id: 37, name: 'Sirish B. N.', category: 'Donor Cum Trustee' },
+  { id: 38, name: 'Sivaprasad Reddy R.', category: 'Donor Cum Trustee' },
+  { id: 39, name: 'Dr. Somaraju B.', category: 'Donor Cum Trustee' },
+  { id: 40, name: 'Sunil Talwar', category: 'Donor Cum Trustee' },
+  { id: 41, name: 'Surender Pal Singh Saluja', category: 'Donor Cum Trustee' },
+
   
   // Individual Donors
-  { id: 13, name: 'Dr. Rajesh Kumar', amount: 250000, date: '2023-01-05', category: 'individual' },
-  { id: 14, name: 'Mrs. Anita Desai', amount: 200000, date: '2023-02-08', category: 'individual' },
-  { id: 15, name: 'Mr. Vikram Singh', amount: 150000, date: '2023-03-12', category: 'individual' },
-  { id: 16, name: 'Ms. Priya Sharma', amount: 100000, date: '2023-04-17', category: 'individual' },
-  { id: 17, name: 'Mr. Mohan Rao', amount: 75000, date: '2023-05-20', category: 'individual' },
-  { id: 18, name: 'Mrs. Sunita Reddy', amount: 50000, date: '2023-06-02', category: 'individual' },
-  { id: 19, name: 'Dr. Sanjay Patel', amount: 25000, date: '2023-06-15', category: 'individual' },
-  { id: 20, name: 'Mr. Ravi Krishnan', amount: 20000, date: '2023-07-01', category: 'individual' },
+  { id: 42, name: 'Agarwal Samaj, Balkampet', category: 'Donors' },
+  { id: 43, name: 'Seshamamba Foundation', category: 'Donors' }, 
+  { id: 44, name: 'Dr. G. Padma', category: 'Donors' },
+  { id: 45, name: 'Ashitosh Modi', category: 'Donors' },
+  { id: 46, name: 'Gautam Chand Jain', category: 'Donors' },
+  { id: 47, name: 'Gerard Carr', category: 'Donors' },
+  { id: 48, name: 'Govind Gupta', category: 'Donors' },
+  { id: 49, name: 'Pradarsh Katyal', category: 'Donors' },
+  { id: 50, name: 'Rajesh Khanna', category: 'Donors' },
+  { id: 51, name: 'Ranbir Singh Gandhi', category: 'Donors' },
+  { id: 52, name: 'Dr. Surender L. R', category: 'Donors' },
+  { id: 53, name: 'Viram Reddy K.', category: 'Donors' },
 ];
 
 export default function DonorsPage() {
@@ -61,19 +93,19 @@ export default function DonorsPage() {
   });
   
   // Group donors by category for display
-  const platinumDonors = filteredDonors.filter(donor => donor.category === 'platinum');
-  const goldDonors = filteredDonors.filter(donor => donor.category === 'gold');
-  const silverDonors = filteredDonors.filter(donor => donor.category === 'silver');
-  const individualDonors = filteredDonors.filter(donor => donor.category === 'individual');
+  const platinumDonors = filteredDonors.filter(donor => donor.category === 'Chief Patron');
+  const goldDonors = filteredDonors.filter(donor => donor.category === 'Patron Cum Trustee');
+  const silverDonors = filteredDonors.filter(donor => donor.category === 'Donor Cum Trustee');
+  const individualDonors = filteredDonors.filter(donor => donor.category === 'Donors');
 
   // Get donor badge color based on category
   const getDonorBadgeColor = (category: string) => {
     switch (category) {
-      case 'platinum':
+      case 'Chief Patron':
         return 'bg-gradient-to-r from-gray-300 to-gray-100 border-gray-300';
-      case 'gold':
+      case 'Patron Cum Trustee':
         return 'bg-gradient-to-r from-amber-300 to-amber-100 border-amber-300';
-      case 'silver':
+      case 'Donor Cum Trustee':
         return 'bg-gradient-to-r from-gray-300 to-gray-100 border-gray-200';
       default:
         return 'bg-gradient-to-r from-blue-100 to-white border-blue-200';
@@ -122,62 +154,62 @@ export default function DonorsPage() {
                   All Donors
                 </button>
                 <button
-                  onClick={() => setFilter('platinum')}
+                  onClick={() => setFilter('Chief Patron')}
                   className={cn(
                     "px-4 py-2 rounded-full text-sm whitespace-nowrap",
-                    filter === 'platinum'
+                    filter === 'Chief Patron'
                       ? "bg-primary text-white"
                       : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
                   )}
                 >
-                  Platinum
+                  Chief Patron
                 </button>
                 <button
-                  onClick={() => setFilter('gold')}
+                  onClick={() => setFilter('Patron Cum Trustee')}
                   className={cn(
                     "px-4 py-2 rounded-full text-sm whitespace-nowrap",
-                    filter === 'gold'
+                    filter === 'Patron Cum Trustee'
                       ? "bg-primary text-white"
                       : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
                   )}
                 >
-                  Gold
+                  Patron Cum Trustee
                 </button>
                 <button
-                  onClick={() => setFilter('silver')}
+                  onClick={() => setFilter('Donor Cum Trustee')}
                   className={cn(
                     "px-4 py-2 rounded-full text-sm whitespace-nowrap",
-                    filter === 'silver'
+                    filter === 'Donor Cum Trustee'
                       ? "bg-primary text-white"
                       : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
                   )}
                 >
-                  Silver
+                  Donor Cum Trustee
                 </button>
                 <button
-                  onClick={() => setFilter('individual')}
+                  onClick={() => setFilter('Donors')}
                   className={cn(
                     "px-4 py-2 rounded-full text-sm whitespace-nowrap",
-                    filter === 'individual'
+                    filter === 'Donors'
                       ? "bg-primary text-white"
                       : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
                   )}
                 >
-                  Individual
+                  Donors
                 </button>
               </div>
             </div>
           </div>
 
           {/* Platinum Donors */}
-          {(filter === 'all' || filter === 'platinum') && platinumDonors.length > 0 && (
+          {(filter === 'all' || filter === 'Chief Patron') && platinumDonors.length > 0 && (
             <div className="mb-12">
               <ScrollReveal>
                 <h3 className="font-serif text-2xl font-bold mb-6 flex items-center">
                   <span className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-gray-300 to-gray-100 mr-3">
                     <HeartHandshake className="h-5 w-5 text-gray-700" />
                   </span>
-                  Platinum Donors (₹15,00,000+)
+                  Chief Patron
                 </h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -193,15 +225,6 @@ export default function DonorsPage() {
                       )}
                     >
                       <h4 className="font-serif text-xl font-bold mb-2">{donor.name}</h4>
-                      <p className="text-gray-700 dark:text-gray-300 mb-2">
-                        ₹{donor.amount.toLocaleString()}
-                      </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        {new Date(donor.date).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'long',
-                        })}
-                      </p>
                     </motion.div>
                   ))}
                 </div>
@@ -210,14 +233,14 @@ export default function DonorsPage() {
           )}
 
           {/* Gold Donors */}
-          {(filter === 'all' || filter === 'gold') && goldDonors.length > 0 && (
+          {(filter === 'all' || filter === 'Patron Cum Trustee') && goldDonors.length > 0 && (
             <div className="mb-12">
               <ScrollReveal>
                 <h3 className="font-serif text-2xl font-bold mb-6 flex items-center">
                   <span className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-amber-300 to-amber-100 mr-3">
                     <HeartHandshake className="h-5 w-5 text-amber-700" />
                   </span>
-                  Gold Donors (₹5,00,000 - ₹15,00,000)
+                  Patron Cum Trustee
                 </h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -233,15 +256,7 @@ export default function DonorsPage() {
                       )}
                     >
                       <h4 className="font-serif text-xl font-bold mb-2">{donor.name}</h4>
-                      <p className="text-gray-700 dark:text-gray-300 mb-2">
-                        ₹{donor.amount.toLocaleString()}
-                      </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        {new Date(donor.date).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'long',
-                        })}
-                      </p>
+
                     </motion.div>
                   ))}
                 </div>
@@ -250,14 +265,14 @@ export default function DonorsPage() {
           )}
 
           {/* Silver Donors */}
-          {(filter === 'all' || filter === 'silver') && silverDonors.length > 0 && (
+          {(filter === 'all' || filter === 'Donor Cum Trustee') && silverDonors.length > 0 && (
             <div className="mb-12">
               <ScrollReveal>
                 <h3 className="font-serif text-2xl font-bold mb-6 flex items-center">
                   <span className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-gray-300 to-gray-100 mr-3">
                     <HeartHandshake className="h-5 w-5 text-gray-600" />
                   </span>
-                  Silver Donors (₹3,00,000 - ₹5,00,000)
+                  Donor Cum Trustee
                 </h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -273,15 +288,6 @@ export default function DonorsPage() {
                       )}
                     >
                       <h4 className="font-serif text-xl font-bold mb-2">{donor.name}</h4>
-                      <p className="text-gray-700 dark:text-gray-300 mb-2">
-                        ₹{donor.amount.toLocaleString()}
-                      </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        {new Date(donor.date).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'long',
-                        })}
-                      </p>
                     </motion.div>
                   ))}
                 </div>
@@ -290,14 +296,14 @@ export default function DonorsPage() {
           )}
 
           {/* Individual Donors */}
-          {(filter === 'all' || filter === 'individual') && individualDonors.length > 0 && (
+          {(filter === 'all' || filter === 'Donors') && individualDonors.length > 0 && (
             <div>
               <ScrollReveal>
                 <h3 className="font-serif text-2xl font-bold mb-6 flex items-center">
                   <span className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-100 to-white mr-3">
                     <HeartHandshake className="h-5 w-5 text-blue-600" />
                   </span>
-                  Individual Donors
+                  Donors
                 </h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -313,15 +319,6 @@ export default function DonorsPage() {
                       )}
                     >
                       <h4 className="font-serif text-xl font-bold mb-2">{donor.name}</h4>
-                      <p className="text-gray-700 dark:text-gray-300 mb-2">
-                        ₹{donor.amount.toLocaleString()}
-                      </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        {new Date(donor.date).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'long',
-                        })}
-                      </p>
                     </motion.div>
                   ))}
                 </div>
