@@ -12,6 +12,7 @@ import AnimatedCounter from '@/components/ui/AnimatedCounter';
 import PageTransition from '@/components/layout/PageTransition';
 import { ArrowRight, Leaf, Flower, Flame, CloudRain, CloudSun, Recycle } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import aboutimg from '@/assets/1.jpg';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -74,7 +75,7 @@ export default function HomePage() {
                   Swargvatika is Hyderabad's first eco-friendly crematorium, designed to minimize environmental impact while providing respectful services for the deceased and their families.
                 </p>
                 <p>
-                  We combine age-old traditions with environmentally sustainable practices, offering multiple cremation options including Gau Kashth, LPG/CNG, and Bio-gas systems.
+                  We combine age-old traditions with environmentally sustainable practices, offering multiple cremation options including Gau Kasht, Electric and LPG systems.
                 </p>
               </div>
               <div className="mt-8">
@@ -103,12 +104,12 @@ export default function HomePage() {
                 <div className="rounded-2xl overflow-hidden shadow-2xl card-3d">
                   <div className="bg-white p-2 dark:bg-gray-800">
                     <img 
-                      src="/images/about-image.jpg" 
+                      src="/assets/1.jpg" 
                       alt="Swargvatika Crematorium" 
                       className="rounded-xl w-full h-[400px] object-cover"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        target.src = 'https://images.unsplash.com/photo-1592431698394-e5ed80f2c0a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80';
+                        target.src = aboutimg;
                       }}
                     />
                   </div>
@@ -128,7 +129,7 @@ export default function HomePage() {
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               <AnimatedCounter 
-                end={1000} 
+                end={10000} 
                 title="Families Served" 
                 suffix="+" 
               />
@@ -138,11 +139,11 @@ export default function HomePage() {
                 suffix="%" 
               />
               <AnimatedCounter 
-                end={5} 
+                end={12} 
                 title="Years of Service" 
               />
               <AnimatedCounter 
-                end={500} 
+                end={5000} 
                 title="Trees Saved" 
                 suffix="+" 
               />
@@ -164,20 +165,20 @@ export default function HomePage() {
             {[
               {
                 icon: <Flower className="h-6 w-6" />,
-                title: "Gau Kashth",
+                title: "Gau Kasht",
                 description: "Traditional cremation using cow dung cakes, an eco-friendly alternative to conventional firewood.",
                 delay: 0,
               },
               {
                 icon: <Flame className="h-6 w-6" />,
-                title: "LPG/CNG Crematorium",
-                description: "Energy-efficient and pollution-free cremation with electrical backup for uninterrupted services.",
+                title: "LPG Based",
+                description: "Energy-efficient and pollution-free cremation that uses liquefied petroleum gas as fuel for cremation.",
                 delay: 0.1,
               },
               {
                 icon: <Recycle className="h-6 w-6" />,
-                title: "Bio-gas Crematorium",
-                description: "Utilizing renewable energy sources for an environmentally sustainable cremation process.",
+                title: "Charitable Medical Centre",
+                description: "Swarg Vatika's new Charitable Medical Centre provides essential diagnostic, dental, physiotherapy, and ENT services along with affordable generic medicines, offering care and support to the families who need it most.",
                 delay: 0.2,
               },
               {
@@ -189,13 +190,25 @@ export default function HomePage() {
               {
                 icon: <CloudSun className="h-6 w-6" />,
                 title: "Last Journey Vehicle",
-                description: "Transportation services for the deceased with dignity and respect.",
+                description: "Transportation services for the deceased with dignity and respect in AC hearses/vans.",
                 delay: 0.4,
               },
               {
                 icon: <Leaf className="h-6 w-6" />,
+                title: "Eye-Donation Tie-Up with LV Prasad Eye Institute", 
+                description: "Swargvatika has tied up with LV Prasad Eye Institute to facilitate donation of eyes to help the visually impaired. Those who opt for eye donation will recieve free cremation service.",
+                delay: 0.5,
+              },
+              {
+                icon: <Leaf className="h-6 w-6" />,
+                title: "BPL Families",
+                description: "Swarg Vatika offers a 50% discount on cremation services for Below Poverty Line families.",
+                delay: 0.5,
+              },
+              {
+                icon: <Leaf className="h-6 w-6" />,
                 title: "Additional Services",
-                description: "Body freezer boxes, pandit arrangements, and special accommodations for families.",
+                description: "Body freezer boxes, preservation of ashes, mortuary, pandit arrangements, and pooja halls for a complete funeral service. Swarg Vatika also offers free cremation services for unclaimed bodies.",
                 delay: 0.5,
               },
             ].map((service, index) => (
@@ -243,7 +256,7 @@ export default function HomePage() {
             <ScrollReveal>
               <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">Ready to Learn More About Our Eco-Friendly Services?</h2>
               <p className="text-white/80 text-lg mb-8">
-                Contact us today to discover how Swargvatika can provide a dignified farewell in harmony with nature.
+                Contact us today to discover how Swarg Vatika can provide a dignified farewell in harmony with nature.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link

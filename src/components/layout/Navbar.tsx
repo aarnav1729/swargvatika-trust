@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -62,7 +61,7 @@ export default function Navbar() {
             transition={{ duration: 0.5 }}
             className="flex flex-col"
           >
-            <span className="font-serif text-xl font-bold">Swargvatika</span>
+            <span className="font-serif text-xl font-bold">Swarg Vatika</span>
             <span className="text-xs text-muted-foreground">Eco-Friendly Crematorium</span>
           </motion.div>
         </Link>

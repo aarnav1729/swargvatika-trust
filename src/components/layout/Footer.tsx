@@ -3,6 +3,7 @@ import { ChevronRight, Facebook, Instagram, Leaf, Mail, MapPin, Phone, Twitter }
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import { cn } from '@/lib/utils';
+import path from 'path';
 
 export default function Footer() {
   const { ref, inView } = useInView({
@@ -43,7 +44,7 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Leaf className="h-6 w-6 text-primary" />
-              <h3 className="font-serif text-xl font-bold">Swargvatika</h3>
+              <h3 className="font-serif text-xl font-bold">Swarg Vatika</h3>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
               Hyderabad's first eco-friendly, energy efficient, and pollution-free crematorium, providing respectful final journey services while preserving our environment.
@@ -66,10 +67,13 @@ export default function Footer() {
             <h3 className="font-serif text-lg font-medium">Quick Links</h3>
             <ul className="space-y-2">
               {[
+                { name: "Home", path: "/" },
                 { name: "About Us", path: "/about" },
                 { name: "Our Services", path: "/services" },
                 { name: "Donor List", path: "/donors" },
+                { name: "Location", path: "/location" },
                 { name: "Gallery", path: "/gallery" },
+                { name: "Media", path: "/media" },
                 { name: "Contact Us", path: "/contact" },
               ].map((link) => (
                 <li key={link.path}>
@@ -91,11 +95,17 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 "Gau Kashth",
-                "LPG/CNG Crematorium",
-                "Bio-gas Crematorium",
+                "LPG Crematorium",
+                "Charitable Medical Centre",
+                "Electrical Crematorium",
                 "Conventional Platforms",
                 "Last Journey Vehicle",
+                "Eye Donation",
                 "Body Freezer Boxes",
+                "Mortuary Services",
+                "Ash Preservation",
+                "Pandit Arrangement",
+                "Pooja Hall",
               ].map((service) => (
                 <li key={service}>
                   <Link 
