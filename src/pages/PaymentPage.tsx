@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -14,7 +13,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 import { cn } from '@/lib/utils';
 import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
-import { CalendarIcon, Clock, Check } from 'lucide-react';
+import { CalendarIcon, Clock } from 'lucide-react';
 import {
   Popover,
   PopoverContent,
@@ -27,6 +26,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+
+const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID as string;
 
 // Interface for service data
 interface ServiceData {
@@ -61,6 +62,8 @@ export default function PaymentPage() {
     '06:00 PM', '07:00 PM'
   ];
 
+  const [paymentMethod, setPaymentMethod] = useState<'card' | 'upi'>('card');  // ← ADD THIS
+
   // Load selected services from session storage
   useEffect(() => {
     try {
@@ -86,7 +89,7 @@ export default function PaymentPage() {
     };
   }, []);
 
-  // Calculate total
+  // Calculate total (GST removed)
   const calculateTotal = (): number => {
     return selectedServices.reduce((total, service) => total + service.price, 0);
   };
@@ -102,119 +105,52 @@ export default function PaymentPage() {
     setFormData(prev => ({ ...prev, agreeTerms: checked }));
   };
 
-  // Initialize Razorpay payment
-  const initializePayment = () => {
-    if (!serviceDate || !serviceTime) {
-      toast({
-        title: "Date and Time Required",
-        description: "Please select a date and time for the service.",
-        variant: "destructive",
-      });
-      return;
-    }
-    
-    if (!formData.agreeTerms) {
-      toast({
-        title: "Agreement Required",
-        description: "Please agree to the terms and conditions to proceed.",
-        variant: "destructive",
-      });
-      return;
-    }
+  // Initialize payment based on payment method selection
+  const initializePayment = async () => {  
+    if (!formData.agreeTerms) return toast({ title: 'Accept terms to proceed', variant: 'destructive' });  
+    setLoading(true);  
+    try {  
+      // 1) Create order on our server  
+      const amount = calculateTotal() * 100;  
+      const orderRes = await fetch('/api/payment/order', {  
+        method: 'POST', headers: { 'Content-Type': 'application/json' },  
+        body: JSON.stringify({ amount, notes: { services: selectedServices.map(s => s.title).join(', ') } })  
+      });  
+      const order = await orderRes.json();  
 
-    // Basic form validation
-    if (!formData.name || !formData.email || !formData.phone) {
-      toast({
-        title: "Missing Information",
-        description: "Please fill in all required fields.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setLoading(true);
-
-    // Create payment intent data
-    const paymentData = {
-      key: "rzp_test_YOUR_KEY_ID", // Replace with your actual key in production
-      amount: calculateTotal() * 100, // Amount in paise
-      currency: "INR",
-      name: "Swargvatika",
-      description: "Payment for cremation services",
-      image: "/path/to/your/logo.png",
-      handler: function(response: any) {
-        // Handle successful payment
-        toast({
-          title: "Payment Successful",
-          description: `Payment ID: ${response.razorpay_payment_id}`,
-        });
-        
-        // In a real app, you would verify the payment on your server
-        // For demo purposes, we'll simulate success and redirect
-        setTimeout(() => {
-          navigate('/');
-        }, 2000);
-      },
-      prefill: {
-        name: formData.name,
-        email: formData.email,
-        contact: formData.phone,
-      },
-      notes: {
-        address: formData.address,
-        services: selectedServices.map(s => s.title).join(', '),
-      },
-      theme: {
-        color: "#51BC2B",
-      },
-    };
-
-    console.log("Razorpay payment would initialize with options:", paymentData);
-    
-    // Move to QR code view
-    setPaymentStep('qr');
-    
-    // After 30 seconds, show success animation
-    timerRef.current = setTimeout(() => {
-      setPaymentStep('success');
-      
-      // After success animation, redirect to home
-      setTimeout(() => {
-        toast({
-          title: "E-Receipt Sent",
-          description: "Your e-receipt has been sent to your email address.",
-        });
-        navigate('/');
-      }, 3000);
-    }, 30000);
-  };
-
-  // Generate e-receipt
-  const generateReceipt = () => {
-    const receiptData = {
-      receiptNumber: Math.random().toString(36).substring(2, 10).toUpperCase(),
-      date: format(new Date(), 'dd/MM/yyyy'),
-      customerName: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      services: selectedServices,
-      serviceDate: serviceDate ? format(serviceDate, 'dd/MM/yyyy') : '',
-      serviceTime: serviceTime,
-      subtotal: calculateTotal(),
-      gst: calculateTotal() * 0.18,
-      total: calculateTotal() * 1.18
-    };
-    
-    console.log('Receipt generated:', receiptData);
-    
-    // In a real app, this would generate and send an actual receipt
-    toast({
-      title: "E-Receipt Generated",
-      description: "Your e-receipt has been generated and will be sent to your email."
-    });
-    
-    return receiptData;
-  };
+      // 2) Invoke Razorpay Checkout  
+      const options = {  
+        key: RAZORPAY_KEY_ID,  
+        amount: order.amount,  
+        currency: order.currency,  
+        name: 'Swargvatika',  
+        description: 'Payment for services',  
+        order_id: order.id,  
+        handler: async (resp: any) => {  
+          // 3) Verify on server  
+          const verifyRes = await fetch('/api/payment/verify', {  
+            method: 'POST', headers: { 'Content-Type': 'application/json' },  
+            body: JSON.stringify(resp)  
+          });  
+          const verification = await verifyRes.json();  
+          if (verification.verified) {  
+            toast({ title: 'Payment Successful' });  
+            navigate('/success');  
+          } else {  
+            toast({ title: 'Verification failed', variant: 'destructive' });  
+          }  
+        },  
+        prefill: { name: formData.name, email: formData.email, contact: formData.phone },  
+        theme: { color: '#51BC2B' }  
+      };  
+      new window.Razorpay(options).open();  
+    } catch (err) {  
+      console.error(err);  
+      toast({ title: 'Payment initiation failed', variant: 'destructive' });  
+    } finally {  
+      setLoading(false);  
+    }  
+  };  
 
   return (
     <PageTransition>
@@ -364,6 +300,22 @@ export default function PaymentPage() {
                           />
                         </div>
                         
+                        {/* Payment Method Selection */}
+                        <div className="space-y-2">
+                          <Label>Payment Method *</Label>
+                          <Select value={paymentMethod} onValueChange={(val: 'card' | 'upi') => setPaymentMethod(val)}>
+                            <SelectTrigger className="w-full">
+                              <SelectValue placeholder="Select payment method">
+                                {paymentMethod === 'card' ? "Credit/Debit Card" : "UPI"}
+                              </SelectValue>
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="card">Credit/Debit Card</SelectItem>
+                              <SelectItem value="upi">UPI</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        
                         <div className="flex items-start space-x-2 pt-4">
                           <Checkbox 
                             id="terms" 
@@ -425,15 +377,11 @@ export default function PaymentPage() {
                               <span className="text-muted-foreground">Subtotal</span>
                               <span>₹{calculateTotal().toLocaleString()}</span>
                             </div>
-                            <div className="flex justify-between items-center py-2">
-                              <span className="text-muted-foreground">GST (18%)</span>
-                              <span>₹{(calculateTotal() * 0.18).toLocaleString()}</span>
-                            </div>
                           </div>
                           
                           <div className="flex justify-between items-center py-2 font-bold">
                             <span>Total</span>
-                            <span className="text-xl">₹{(calculateTotal() * 1.18).toLocaleString()}</span>
+                            <span className="text-xl">₹{calculateTotal().toLocaleString()}</span>
                           </div>
                           
                           <Button 
@@ -486,7 +434,7 @@ export default function PaymentPage() {
               >
                 <h2 className="font-serif text-2xl font-bold mb-4">Scan to Pay</h2>
                 <p className="text-muted-foreground mb-6">
-                  Please scan the QR code below to complete your payment of ₹{(calculateTotal() * 1.18).toLocaleString()}
+                  Please scan the QR code below to complete your payment of ₹{calculateTotal().toLocaleString()}
                 </p>
                 
                 <div className="border-4 border-primary rounded-lg p-2 mb-6 inline-block bg-white">
@@ -498,7 +446,7 @@ export default function PaymentPage() {
                 </div>
                 
                 <p className="text-sm text-muted-foreground mb-4">
-                  Payment will be auto-verified within 30 seconds
+                  Payment will be auto-verified in 20 seconds
                 </p>
                 
                 <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mb-4">
@@ -520,6 +468,7 @@ export default function PaymentPage() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 className="max-w-md mx-auto text-center bg-white dark:bg-gray-900 rounded-xl p-8 shadow-md"
               >
+                {/* Payment success animation and confirmation */}
                 <div className="payment-success mb-6">
                   <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
                     <circle className="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
@@ -528,7 +477,9 @@ export default function PaymentPage() {
                 </div>
                 
                 <h2 className="font-serif text-2xl font-bold mb-2">Payment Successful!</h2>
-                <p className="text-muted-foreground mb-6">Your booking has been confirmed.</p>
+                <p className="text-lg text-green-600 font-semibold mb-4">
+                  Your booking is complete and payment has been made in full to Swargvatika.
+                </p>
                 
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 mb-6 text-left">
                   <h3 className="font-medium mb-2">Booking Details:</h3>
@@ -542,7 +493,7 @@ export default function PaymentPage() {
                     <span className="text-muted-foreground">Services:</span> {selectedServices.map(s => s.title).join(', ')}
                   </p>
                   <p className="text-sm">
-                    <span className="text-muted-foreground">Total Amount:</span> ₹{(calculateTotal() * 1.18).toLocaleString()}
+                    <span className="text-muted-foreground">Total Amount:</span> ₹{calculateTotal().toLocaleString()}
                   </p>
                 </div>
                 

@@ -9,6 +9,15 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import med1 from '@/assets/28.jpg';
+import med2 from '@/assets/29.jpg';
+import med3 from '@/assets/27.jpg';
+import med4 from '@/assets/25.jpg';
+import med5 from '@/assets/2.jpg';
+import med6 from '@/assets/7.jpg';
+import med7 from '@/assets/3.jpg';
+import med8 from '@/assets/1.jpg';
+
 
 // Define gallery image interface
 interface GalleryImage {
@@ -23,31 +32,31 @@ const galleryImages: GalleryImage[] = [
   // Facility Images
   {
     id: 'img-1',
-    src: 'https://images.unsplash.com/photo-1606041011872-596597976b25?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80',
+    src: med1,
     alt: 'Main entrance of Swargvatika',
     category: 'facility'
   },
   {
     id: 'img-2',
-    src: 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80',
+    src: med2,
     alt: 'Eco-friendly cremation platform',
     category: 'facility'
   },
   {
     id: 'img-3',
-    src: 'https://images.unsplash.com/photo-1518049284734-565fe61b52aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80',
+    src: med3,
     alt: 'Visitor\'s lounge with seating area',
     category: 'facility'
   },
   {
     id: 'img-4',
-    src: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    src: med4,
     alt: 'Gau Kashth preparation area',
     category: 'facility'
   },
   {
     id: 'img-5',
-    src: 'https://images.unsplash.com/photo-1599137248888-855d14eb5b5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1333&q=80',
+    src: med5,
     alt: 'CNG/LPG cremation system',
     category: 'facility'
   },
@@ -55,25 +64,25 @@ const galleryImages: GalleryImage[] = [
   // Nature Images
   {
     id: 'img-6',
-    src: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    src: med6,
     alt: 'Garden area with native plants',
     category: 'nature'
   },
   {
     id: 'img-7',
-    src: 'https://images.unsplash.com/photo-1445282112994-af2e1ee309a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    src: med7,
     alt: 'Water conservation system',
     category: 'nature'
   },
   {
     id: 'img-8',
-    src: 'https://images.unsplash.com/photo-1500829243541-74b677fecc30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80',
+    src: med8,
     alt: 'Solar panels on facility roof',
     category: 'nature'
   },
   {
     id: 'img-9',
-    src: 'https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80',
+    src: med1,
     alt: 'Tree plantation area',
     category: 'nature'
   },

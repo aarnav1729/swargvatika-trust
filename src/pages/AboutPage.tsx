@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -10,10 +9,10 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 import { useInView } from 'react-intersection-observer';
 import { Leaf, Award, Target, Users } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import BackImg from '@/assets/7.jpg';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
-
 interface TrusteeProps {
   name: string;
   position: string;
@@ -21,8 +20,8 @@ interface TrusteeProps {
 }
 
 const Trustees: TrusteeProps[] = [
-  { name: "Surender Pal Singh Saluja", position: "Chief Patron", photo: "" },
-  { name: "Sanjay Dugar", position: "Chief Patron", photo: "" },
+  { name: "J. Ranjith Rao", position: "Chief Patron", photo: "" },
+  { name: "Kallam Satish Reddy", position: "Chief Patron", photo: "" },
   { name: "Jayant Jain", position: "Patron Cum Trustee", photo: "" },
   { name: "T. B. Rao", position: "Patron Cum Trustee", photo: "" },
   { name: "Amarjyot Singh", position: "Donors Cum Trustee", photo: "" },
@@ -85,14 +84,23 @@ const OfficeBearers: TrusteeProps[] = [
   { name: "Ranjan Sood", position: "General Secretary", photo: "" },
   { name: "Ramesh Chand Malani", position: "Treasurer", photo: "" },
   { name: "Dayanand Gauri", position: "Founder Trustee Cum Settler", photo: "" },
-  { name: "Sunil Talwar", position: "Committee Member", photo: "" },
-  { name: "Hiral Thakral", position: "Committee Member", photo: "" }, 
-  { name: "Narender Gauri", position: "Committee Member", photo: "" },
-  { name: "Rajesh Malik", position: "Committee Member", photo: "" },
+  { name: "Amarnath V", position: "Committee Member", photo: "" },
+  { name: "Anil Dondoo", position: "Committee Member", photo: "" },
+  { name: "Ashok Kapoor", position: "Committee Member", photo: "" },
   { name: "B. N. Sirish", position: "Committee Member", photo: "" },
-  { name: "District Collector", position: "Ex-Officio Chairman", photo: "" },
-  { name: "MLA Secunderabad Cantonment", position: "Ex-Officio Member", photo: "" },
-  { name: "RDO Tirumalgiri", position: "Ex-Officio Member", photo: "" },
+  { name: "Manjeet Singh Gandhi", position: "Committee Member", photo: "" },
+  { name: "Narender Gauri", position: "Committee Member", photo: "" },
+  { name: "Ram Goyal", position: "Committee Member", photo: "" },
+  { name: "Shiv Prasad", position: "Committee Member", photo: "" },
+  { name: "District Collector, Hyderabad", position: "Ex-Officio Chairman", photo: "" },
+  { name: "K. Amarender Rao", position: "Ex-Officio Member", photo: "" },
+  { name: "Padam Jain", position: "Ex-Officio Member", photo: "" },
+  { name: "Pramod Kumar Rumta", position: "Ex-Officio Member", photo: "" },
+  { name: "Praveen Jain", position: "Ex-Officio Member", photo: "" },
+  { name: "Ranbir Singh Gandhi", position: "Ex-Officio Member", photo: "" },
+  { name: "Rajendra Agarwal", position: "Ex-Officio Member", photo: "" },
+  { name: "Ravinder Reddy", position: "Ex-Officio Member", photo: "" }, 
+  { name: "Guda Krishna Prasad", position: "Patron", photo: "" }, 
 ];
 
 export default function AboutPage() {
@@ -166,9 +174,9 @@ export default function AboutPage() {
     <PageTransition>
       {/* Page Header */}
       <PageHeader
-        title="About Swargvatika"
+        title="About Swarg Vatika"
         description="Discover our vision, mission, and the team behind Hyderabad's first eco-friendly crematorium."
-        backgroundImage="https://images.unsplash.com/photo-1592431698394-e5ed80f2c0a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+        backgroundImage= 'BackImg'
       />
 
       {/* Main Content */}
@@ -209,12 +217,12 @@ export default function AboutPage() {
                 <div className="rounded-2xl overflow-hidden shadow-2xl card-3d">
                   <div className="bg-white p-2 dark:bg-gray-800">
                     <img 
-                      src="/images/about-story.jpg" 
+                      src= "/assets/1.jpg" 
                       alt="Swargvatika Crematorium" 
                       className="rounded-xl w-full h-[400px] object-cover"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        target.src = 'https://images.unsplash.com/photo-1606041011872-596597976b25?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80';
+                        target.src = BackImg;
                       }}
                     />
                   </div>

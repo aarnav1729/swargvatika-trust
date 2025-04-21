@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
@@ -8,7 +7,7 @@ import PageHeader from '@/components/ui/PageHeader';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import { Button } from '@/components/ui/button';
-import { MapPin, Navigation, Clock, Phone, Route } from 'lucide-react';
+import { MapPin, Clock, Phone, Navigation, Route } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function LocationPage() {
@@ -47,20 +46,8 @@ export default function LocationPage() {
                   <div>
                     <h3 className="font-medium text-lg mb-1">Address</h3>
                     <p className="text-muted-foreground">
-                      123 Eco Gardens, Near Green Park,<br />
-                      Hyderabad, Telangana, India - 500001
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="location-card flex items-start p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <Navigation className="h-6 w-6 text-primary mr-4 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-medium text-lg mb-1">Landmarks</h3>
-                    <p className="text-muted-foreground">
-                      2 km from Green Park Metro Station<br />
-                      1 km from City Hospital<br />
-                      Adjacent to Central Park
+                      Swarg Vatika Trust, RTC Colony, Tirumalagiri, Secunderabad<br />
+                      (Road to Manasarovar Heights & Beside Leela Gardens)
                     </p>
                   </div>
                 </div>
@@ -70,8 +57,7 @@ export default function LocationPage() {
                   <div>
                     <h3 className="font-medium text-lg mb-1">Hours of Operation</h3>
                     <p className="text-muted-foreground">
-                      Open 24 hours, 7 days a week<br />
-                      Administrative Office: 9:00 AM - 6:00 PM (Monday to Saturday)
+                      Open 24 hours, 7 days a week
                     </p>
                   </div>
                 </div>
@@ -81,9 +67,13 @@ export default function LocationPage() {
                   <div>
                     <h3 className="font-medium text-lg mb-1">Contact</h3>
                     <p className="text-muted-foreground">
-                      Phone: +91 9876 543 210<br />
-                      Emergency: +91 9876 543 211<br />
-                      Email: location@swargvatika.org
+                      <a href="tel:+918008694888" className="hover:text-primary transition-colors">+91 8008694888</a>
+                      <br />
+                      <a href="tel:+919701171222" className="hover:text-primary transition-colors">+91 9701171222</a>
+                      <br />
+                      <a href="mailto:info@swargvatika.org" className="hover:text-primary transition-colors">
+                        info@swargvatika.org
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -99,7 +89,7 @@ export default function LocationPage() {
                   
                   <Button 
                     variant="outline"
-                    onClick={() => window.open('tel:+919876543210')}
+                    onClick={() => window.open('tel:+918008694888')}
                   >
                     <Phone className="mr-2 h-4 w-4" />
                     Call for Assistance
@@ -112,7 +102,7 @@ export default function LocationPage() {
               <div className="rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
                 <iframe
                   title="Swargvatika Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.31087540482!2d78.24323111885973!3d17.412608376148643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana%2C%20India!5e0!3m2!1sen!2sus!4v1650450458232!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.6166363401117!2d78.49708179999999!3d17.478053600000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9af52a216111%3A0xea5ed1fbf85fe193!2sSwarg%20Vatika%20Trust!5e0!3m2!1sen!2sin!4v1743156354842!5m2!1sen!2sin"
                   width="100%"
                   height="450"
                   style={{ border: 0 }}
@@ -143,17 +133,17 @@ export default function LocationPage() {
                 description: "15 minutes from city center via NH65. Ample parking space available at the premises.",
               },
               {
-                icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-train-front"><path d="M8 3.1V7a4 4 0 0 0 8 0V3.1"/><path d="m9 15-1-1"/><path d="m15 15 1-1"/><path d="M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z"/><path d="m8 19-2 3"/><path d="m16 19 2 3"/></svg>,
+                icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-train-front"><path d="M8 3.1V7a4 4 0 0 0 8 0V3.1"/><path d="m9 15-1-1"/><path d="m15 15 1-1"/><path d="M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z"/><path d="m8 19-2 3"/><path d="m16 19 2 3"/></svg>,
                 title: "By Metro",
                 description: "Get down at Green Park Metro Station. 15 minutes walk or 5 minutes by auto rickshaw.",
               },
               {
-                icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-bus"><path d="M8 6v6"/><path d="M16 6v6"/><path d="M3 12h18"/><rect width="18" height="16" x="3" y="3" rx="2"/><path d="M4 19h1.5"/><path d="M18.5 19H20"/><path d="M8 19v2"/><path d="M16 19v2"/></svg>,
+                icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-bus"><path d="M8 6v6"/><path d="M16 6v6"/><path d="M3 12h18"/><rect width="18" height="16" x="3" y="3" rx="2"/><path d="M4 19h1.5"/><path d="M18.5 19H20"/><path d="M8 19v2"/><path d="M16 19v2"/></svg>,
                 title: "By Bus",
                 description: "City buses 45, 72, and 108 stop within walking distance. Get down at Central Park bus stop.",
               },
               {
-                icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-car-taxi"><path d="M10 2h4"/><path d="m21 8-2 2-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10 3 8"/><path d="M7 14h.01"/><path d="M17 14h.01"/><rect width="18" height="8" x="3" y="10" rx="2"/><path d="M5 18v2"/><path d="M19 18v2"/></svg>,
+                icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-car-taxi"><path d="M10 2h4"/><path d="m21 8-2 2-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10 3 8"/><path d="M7 14h.01"/><path d="M17 14h.01"/><rect width="18" height="8" x="3" y="10" rx="2"/><path d="M5 18v2"/><path d="M19 18v2"/></svg>,
                 title: "By Taxi/Auto",
                 description: "Available from all parts of the city. Use ride-sharing apps or call our location for assistance.",
               },
@@ -198,7 +188,7 @@ export default function LocationPage() {
             </p>
             <Button 
               className="shimmer-button bg-white text-gray-900 hover:bg-white/90"
-              onClick={() => window.open('tel:+919876543210')}
+              onClick={() => window.open('tel:+918008694888')}
             >
               <Phone className="mr-2 h-4 w-4" />
               Contact for Emergency Services

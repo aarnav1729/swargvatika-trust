@@ -11,7 +11,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { toast } from '@/components/ui/use-toast';
 import { 
   ArrowRight, Flame, Flower, Recycle, Car, 
-  CloudRain, Package, Clock, Users, UserCog, HeartHandshake 
+  CloudRain, Package, Clock, Users, UserCog, HeartHandshake, 
 } from 'lucide-react';
 
 // Define types for our services
@@ -24,30 +24,21 @@ interface ServiceOption {
   category: 'main' | 'additional';
 }
 
-// Define all available services
 const allServices: ServiceOption[] = [
   {
     id: 'gau-kashth',
     title: 'Gau Kashth',
     description: 'Traditional cremation using cow dung cakes, an eco-friendly alternative to conventional firewood.',
     icon: <Flower className="h-6 w-6" />,
-    price: 5000,
+    price: 4000,
     category: 'main'
   },
   {
     id: 'lpg-cng',
-    title: 'LPG/CNG Crematorium',
+    title: 'LPG Cremation',
     description: 'Energy-efficient and pollution-free cremation with electrical backup for uninterrupted services.',
     icon: <Flame className="h-6 w-6" />,
-    price: 7500,
-    category: 'main'
-  },
-  {
-    id: 'biogas',
-    title: 'Bio-gas/Gassifier Crematorium',
-    description: 'Utilizing renewable energy sources for an environmentally sustainable cremation process.',
-    icon: <Recycle className="h-6 w-6" />,
-    price: 7000,
+    price: 4000,
     category: 'main'
   },
   {
@@ -55,58 +46,75 @@ const allServices: ServiceOption[] = [
     title: 'Conventional Firewood Platforms',
     description: 'Traditional firewood platforms with improved efficiency and reduced environmental impact.',
     icon: <CloudRain className="h-6 w-6" />,
-    price: 4000,
+    price: 5000,
     category: 'main'
   },
   {
-    id: 'last-journey',
-    title: 'Last Journey Vehicle',
-    description: 'Transportation services for the deceased with dignity and respect.',
+    id: 'freezer-box',
+    title: 'Body Freezer Boxes',
+    description: 'Temporary preservation of the deceased before the cremation ceremony (excluding transportation charges).',
+    icon: <Package className="h-6 w-6" />,
+    price: 2000,
+    category: 'additional'
+  },
+  {
+    id: 'last-journey-1-10',
+    title: 'Last Journey Vehicle (1-10 km)',
+    description: 'Air conditioned transportation services for the deceased with dignity and respect. (Upto 10 km to & from)',
     icon: <Car className="h-6 w-6" />,
     price: 2000,
     category: 'additional'
   },
   {
-    id: 'freezer-box',
-    title: 'Body Freezer Boxes',
-    description: 'Temporary preservation of the deceased before the cremation ceremony.',
-    icon: <Package className="h-6 w-6" />,
-    price: 1500,
-    category: 'additional'
-  },
-  {
-    id: 'ashes-collection',
-    title: 'Ashes Collection',
-    description: 'Collection of ashes after two hours of cremation in LPG/CNG and biogas/gassifier systems.',
-    icon: <Clock className="h-6 w-6" />,
-    price: 500,
-    category: 'additional'
-  },
-  {
-    id: 'pandit',
-    title: 'Brahmin/Pandit Services',
-    description: 'Religious ceremony conducted by a qualified pandit as per traditional customs.',
-    icon: <Users className="h-6 w-6" />,
+    id: 'last-journey-11-20',
+    title: 'Last Journey Vehicle (11-20 km)',
+    description: 'Air conditioned transportation services for the deceased with dignity and respect. (11-20 km to & from)',
+    icon: <Car className="h-6 w-6" />,
     price: 2500,
     category: 'additional'
   },
   {
-    id: 'arrangements',
-    title: 'Full Arrangements',
-    description: 'Complete management of the ceremony, allowing family members to focus on paying their respects.',
-    icon: <UserCog className="h-6 w-6" />,
-    price: 5000,
+    id: 'last-journey-21-30',
+    title: 'Last Journey Vehicle (21-30 km)',
+    description: 'Air conditioned transportation services for the deceased with dignity and respect. (21-30 km to & from)',
+    icon: <Car className="h-6 w-6" />,
+    price: 3000,
     category: 'additional'
   },
   {
-    id: 'concessions',
-    title: 'Concessions for Economically Backward',
-    description: 'Special concessions available for families facing financial difficulties. Subject to verification.',
-    icon: <HeartHandshake className="h-6 w-6" />,
-    price: 0, // Price will be determined case by case
+    id: 'last-journey-31-40',
+    title: 'Last Journey Vehicle (31-40 km)',
+    description: 'Air conditioned transportation services for the deceased with dignity and respect. (31-40 km to & from)',
+    icon: <Car className="h-6 w-6" />,
+    price: 3500,
+    category: 'additional'
+  },
+  {
+    id: 'last-journey-41-50',
+    title: 'Last Journey Vehicle (41-50 km)',
+    description: 'Air conditioned transportation services for the deceased with dignity and respect. (41-50 km to & from)',
+    icon: <Car className="h-6 w-6" />,
+    price: 4000,
+    category: 'additional'
+  },
+  {
+    id: 'large-pooja-hall',
+    title: 'Large Pooja Hall',
+    description: 'Spacious pooja hall for large ceremonies and gatherings.',
+    icon: <Flower className="h-6 w-6" />, // Assuming an icon component like "Temple"
+    price: 2000,
+    category: 'additional'
+  },
+  {
+    id: 'small-pooja-hall',
+    title: 'Small Pooja Hall',
+    description: 'Cozy pooja hall for smaller ceremonies and gatherings.',
+    icon: <Flower className="h-6 w-6" />, // Same icon or different based on your preference
+    price: 600,
     category: 'additional'
   },
 ];
+
 
 export default function ServicesPage() {
   // State for selected services

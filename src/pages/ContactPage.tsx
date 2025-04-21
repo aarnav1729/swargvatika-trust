@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
-import { MapPin, Phone, Mail, Clock, Facebook, Twitter, Instagram } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function ContactPage() {
@@ -60,16 +60,16 @@ export default function ContactPage() {
     {
       icon: <MapPin className="h-6 w-6" />,
       title: "Our Location",
-      content: "123 Eco Gardens, Near Green Park, Hyderabad, Telangana, India - 500001"
+      content: "Swarg Vatika Trust, RTC Colony, Tirumalagiri, Secunderabad (Road to Manasarovar Heights & Beside Leela Gardens)."
     },
     {
       icon: <Phone className="h-6 w-6" />,
       title: "Phone Numbers",
       content: (
         <>
-          <a href="tel:+919876543210" className="hover:text-primary transition-colors">+91 9876 543 210</a>
+          <a href="tel:+918008694888" className="hover:text-primary transition-colors">+91 8008694888</a>
           <br />
-          <a href="tel:+919876543211" className="hover:text-primary transition-colors">+91 9876 543 211 (Emergency)</a>
+          <a href="tel:+919701171222" className="hover:text-primary transition-colors">+91 9701171222</a>
         </>
       )
     },
@@ -218,27 +218,12 @@ export default function ContactPage() {
                       </motion.div>
                     ))}
                   </div>
-
-                  <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                    <h4 className="font-medium text-lg mb-4">Follow Us</h4>
-                    <div className="flex space-x-4">
-                      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white flex items-center justify-center transition-colors">
-                        <Facebook className="h-5 w-5" />
-                      </a>
-                      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white flex items-center justify-center transition-colors">
-                        <Twitter className="h-5 w-5" />
-                      </a>
-                      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white flex items-center justify-center transition-colors">
-                        <Instagram className="h-5 w-5" />
-                      </a>
-                    </div>
-                  </div>
                 </div>
 
                 <div className="rounded-xl overflow-hidden shadow-md border border-gray-100 dark:border-gray-700">
                   <iframe
                     title="Swargvatika Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.31087540482!2d78.24323111885973!3d17.412608376148643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana%2C%20India!5e0!3m2!1sen!2sus!4v1650450458232!5m2!1sen!2sus"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.6166363401117!2d78.49708179999999!3d17.478053600000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9af52a216111%3A0xea5ed1fbf85fe193!2sSwarg%20Vatika%20Trust!5e0!3m2!1sen!2sin!4v1743156354842!5m2!1sen!2sin"
                     width="100%"
                     height="250"
                     style={{ border: 0 }}
@@ -270,11 +255,11 @@ export default function ContactPage() {
               },
               {
                 question: "How do I book a cremation service?",
-                answer: "You can book a cremation service by calling our helpline at +91 9876 543 210, visiting our facility in person, or completing the service booking form on our website."
+                answer: "You can book a cremation service by calling our helpline at +91 8008694888, visiting our facility in person, or completing the service booking form on our website."
               },
               {
                 question: "What eco-friendly options are available for cremation?",
-                answer: "We offer several eco-friendly options including Gau Kashth (cow dung cakes), LPG/CNG cremation, and Bio-gas/Gassifier cremation, all of which significantly reduce environmental impact compared to traditional methods."
+                answer: "We offer several eco-friendly options including Gau Kashth, and LPG cremation, both of which significantly reduce environmental impact compared to traditional methods."
               },
               {
                 question: "Is there parking available at the facility?",
@@ -282,11 +267,11 @@ export default function ContactPage() {
               },
               {
                 question: "Can you arrange for transportation of the deceased?",
-                answer: "Yes, we provide Last Journey Vehicle services for transporting the deceased from anywhere within Hyderabad to our facility. This can be arranged by contacting our helpline."
+                answer: "Yes, we provide Last Journey Vehicle services for transporting the deceased from anywhere within Hyderabad to our facility. This can be arranged by contacting our helpline or using the form on the website."
               },
               {
                 question: "Are there concessions available for economically disadvantaged families?",
-                answer: "Yes, we offer special concessions for economically backward families. These are provided on a case-by-case basis following verification. Please contact our administration for more details."
+                answer: "Yes, we offer special concessions for economically backward families. These are provided on a case-by-case basis following verification. Please contact our administration for more details. Below poverty line families are given a discount of 50% on cremation services."
               },
             ].map((faq, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
@@ -309,7 +294,7 @@ export default function ContactPage() {
               <p className="mt-2 text-white/80">Our emergency helpline is available 24/7.</p>
             </div>
             <a 
-              href="tel:+919876543211" 
+              href="tel:+918008694888" 
               className="px-6 py-3 bg-white text-primary font-medium rounded-lg hover:bg-opacity-90 transition-colors shimmer-button"
             >
               <Phone className="inline-block mr-2 h-5 w-5" />

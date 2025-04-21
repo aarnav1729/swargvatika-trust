@@ -75,7 +75,7 @@ export default function HomePage() {
                   Swargvatika is Hyderabad's first eco-friendly crematorium, designed to minimize environmental impact while providing respectful services for the deceased and their families.
                 </p>
                 <p>
-                  We combine age-old traditions with environmentally sustainable practices, offering multiple cremation options including Gau Kasht, Electric and LPG systems.
+                  We combine age-old traditions with environmentally sustainable practices, offering multiple cremation options including Gau Kasht, Conventional and LPG systems.
                 </p>
               </div>
               <div className="mt-8">

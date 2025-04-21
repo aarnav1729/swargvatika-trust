@@ -19,8 +19,9 @@ interface Donor {
 // Sample donor data
 const donors: Donor[] = [
   // Platinum Donors
-  { id: 1, name: 'Kallam Satish Reddy', category: 'Chief Patron' },
-  { id: 2, name: 'J. Ranjith Rao', category: 'Chief Patron' },
+  { id: 1, name: 'J. Ranjith Rao (Managing Director, My Home Constructions)', category: 'Chief Patron' },
+  { id: 2, name: 'Kallam Satish Reddy (Chairman, Reddys Laboratories)', category: 'Chief Patron' },
+
   
   // Gold Donors
   { id: 3, name: 'Guda Krishna Prasad', category: 'Patron Cum Trustee' },

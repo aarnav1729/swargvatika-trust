@@ -1,5 +1,5 @@
 
-import { ChevronRight, Facebook, Instagram, Leaf, Mail, MapPin, Phone, Twitter } from 'lucide-react';
+import { ChevronRight, Leaf, Mail, MapPin, Phone, } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import { cn } from '@/lib/utils';
@@ -49,17 +49,6 @@ export default function Footer() {
             <p className="text-gray-300 text-sm leading-relaxed">
               Hyderabad's first eco-friendly, energy efficient, and pollution-free crematorium, providing respectful final journey services while preserving our environment.
             </p>
-            <div className="flex space-x-4 pt-2">
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors" aria-label="Facebook">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors" aria-label="Twitter">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors" aria-label="Instagram">
-                <Instagram size={20} />
-              </a>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -97,7 +86,6 @@ export default function Footer() {
                 "Gau Kashth",
                 "LPG Crematorium",
                 "Charitable Medical Centre",
-                "Electrical Crematorium",
                 "Conventional Platforms",
                 "Last Journey Vehicle",
                 "Eye Donation",
@@ -126,12 +114,12 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin size={20} className="mr-3 text-primary shrink-0 mt-1" />
-                <span className="text-gray-300">123 Eco Gardens, Hyderabad, Telangana, India - 500001</span>
+                <span className="text-gray-300">Swarg Vatika Trust, RTC Colony, Tirumalagiri, Secunderabad (Road to Manasarovar Heights & Beside Leela Gardens).</span>
               </li>
               <li className="flex items-center">
                 <Phone size={20} className="mr-3 text-primary shrink-0" />
-                <a href="tel:+919876543210" className="text-gray-300 hover:text-primary transition-colors">
-                  +91 9876 543 210
+                <a href="tel:+918008694888" className="text-gray-300 hover:text-primary transition-colors">
+                  +91 8008694888
                 </a>
               </li>
               <li className="flex items-center">

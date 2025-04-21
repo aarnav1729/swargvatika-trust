@@ -9,6 +9,16 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Calendar, Clock, ExternalLink, FileText, Globe, Video } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import imgg from '@/assets/11.jpg';
+import img12 from '@/assets/12.jpg';
+import img13 from '@/assets/13.jpg';
+import img14 from '@/assets/14.jpg';
+import img15 from '@/assets/15.jpg';
+import img16 from '@/assets/16.jpg';
+import img17 from '@/assets/17.jpg';
+import img18 from '@/assets/18.jpg';
+import img19 from '@/assets/19.jpg';
+import img20 from '@/assets/20.jpg';
 
 // Interface for news article
 interface NewsArticle {
@@ -51,7 +61,7 @@ const newsArticles: NewsArticle[] = [
     source: 'The Hindu',
     excerpt: 'Swargvatika, the city\'s first eco-friendly crematorium, was inaugurated yesterday by the Municipal Commissioner...',
     link: 'https://example.com/news1',
-    image: 'https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80',
+    image: img19,
   },
   {
     id: 'news-2',
@@ -60,7 +70,7 @@ const newsArticles: NewsArticle[] = [
     source: 'Times of India',
     excerpt: 'The innovative approaches at Swargvatika are setting new standards for environmentally conscious final rites...',
     link: 'https://example.com/news2',
-    image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    image: img20,
   },
   {
     id: 'news-3',
@@ -69,7 +79,7 @@ const newsArticles: NewsArticle[] = [
     source: 'Deccan Chronicle',
     excerpt: 'A recent environmental audit has shown that Swargvatika\'s eco-friendly practices have reduced carbon emissions by 75%...',
     link: 'https://example.com/news3',
-    image: 'https://images.unsplash.com/photo-1616478505979-c311ad60e9c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    image: img13,
   },
   {
     id: 'news-4',
@@ -78,7 +88,7 @@ const newsArticles: NewsArticle[] = [
     source: 'Environmental Today',
     excerpt: 'In recognition of its innovative eco-friendly practices, Swargvatika has been awarded the Environmental Excellence Award...',
     link: 'https://example.com/news4',
-    image: 'https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    image: img14,
   },
 ];
 
@@ -89,7 +99,7 @@ const videos: VideoItem[] = [
     title: 'Swargvatika: A Tour of Our Eco-Friendly Facilities',
     date: '2023-03-15',
     duration: '5:27',
-    thumbnail: 'https://images.unsplash.com/photo-1594909122845-11baa439b7bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    thumbnail: img15,
     youtubeId: 'dQw4w9WgXcQ', // This is a placeholder ID
   },
   {
@@ -97,7 +107,7 @@ const videos: VideoItem[] = [
     title: 'The Environmental Impact of Traditional vs. Eco-Friendly Cremation',
     date: '2023-04-02',
     duration: '8:15',
-    thumbnail: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    thumbnail: img16,
     youtubeId: 'dQw4w9WgXcQ', // This is a placeholder ID
   },
   {
@@ -105,7 +115,7 @@ const videos: VideoItem[] = [
     title: 'Interview with Dr. Sharma: The Vision Behind Swargvatika',
     date: '2023-02-18',
     duration: '12:36',
-    thumbnail: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    thumbnail: img17,
     youtubeId: 'dQw4w9WgXcQ', // This is a placeholder ID
   },
 ];
@@ -119,7 +129,7 @@ const publications: Publication[] = [
     date: '2023-01',
     authors: 'Dr. A. Kumar, Dr. B. Singh',
     link: 'https://example.com/paper1',
-    image: 'https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    image: img18,
   },
   {
     id: 'pub-2',
@@ -128,7 +138,7 @@ const publications: Publication[] = [
     date: '2022-11',
     authors: 'Swargvatika Environmental Research Team',
     link: 'https://example.com/paper2',
-    image: 'https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    image: img17,
   },
   {
     id: 'pub-3',
@@ -137,7 +147,7 @@ const publications: Publication[] = [
     date: '2023-02',
     authors: 'Swargvatika Sustainability Office',
     link: 'https://example.com/report1',
-    image: 'https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    image: img16,
   },
 ];
 
