@@ -113,6 +113,14 @@ const allServices: ServiceOption[] = [
     price: 600,
     category: 'additional'
   },
+  {
+    id: 'test-item',
+    title: 'test-item',
+    description: 'test-item',
+    icon: <Flower className="h-6 w-6" />, // Same icon or different based on your preference
+    price: 10,
+    category: 'additional'
+  },
 ];
 
 
