@@ -20,6 +20,7 @@ import ServiceDetailsPage from "./pages/ServiceDetailsPage";
 import PaymentPage from "./pages/PaymentPage";
 import NotFound from "./pages/NotFound";
 import Index from "./pages/Index";
+import SuccessPage from "./pages/SuccessPage";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ const AnimatedRoutes = () => {
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/success" element={<SuccessPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
