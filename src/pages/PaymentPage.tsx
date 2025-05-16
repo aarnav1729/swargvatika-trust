@@ -112,7 +112,7 @@ export default function PaymentPage() {
     try {  
       // 1) Create order on our server  
       const amount = calculateTotal() * 100;  
-      const orderRes = await fetch('/api/payment/order', {  
+      const orderRes = await fetch('https://swargvatika-trust.onrender.com/api/payment/order', {  
         method: 'POST', headers: { 'Content-Type': 'application/json' },  
         body: JSON.stringify({ amount, notes: { services: selectedServices.map(s => s.title).join(', ') } })  
       });  
@@ -128,7 +128,7 @@ export default function PaymentPage() {
         order_id: order.id,  
         handler: async (resp: any) => {  
           // 3) Verify on server  
-          const verifyRes = await fetch('/api/payment/verify', {  
+          const verifyRes = await fetch('https://swargvatika-trust.onrender.com/api/payment/verify', {  
             method: 'POST', headers: { 'Content-Type': 'application/json' },  
             body: JSON.stringify(resp)  
           });  
