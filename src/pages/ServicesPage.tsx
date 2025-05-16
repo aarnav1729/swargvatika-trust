@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PageTransition from '@/components/layout/PageTransition';
 import PageHeader from '@/components/ui/PageHeader';
@@ -125,6 +125,7 @@ const allServices: ServiceOption[] = [
 
 
 export default function ServicesPage() {
+  const navigate = useNavigate();
   // State for selected services
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   
@@ -165,7 +166,7 @@ export default function ServicesPage() {
     ));
     
     // Navigate to payment page
-    window.location.href = '/payment';
+    navigate('/payment');
   };
 
   // Service card component
