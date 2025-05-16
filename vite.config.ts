@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => ({
     proxy: {
       // Forward /api requests to the backend server
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'https://swargvatika.onrender.com',
         changeOrigin: true,
         secure: false,
       },
