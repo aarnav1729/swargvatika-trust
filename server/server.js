@@ -112,7 +112,11 @@ app.post("/api/email/receipt", async (req, res) => {
       message: {
         subject: "Swarg Vatika Payment Confirmation",
         body: { contentType: "HTML", content: htmlContent },
-        toRecipients: [{ emailAddress: { address: email } }],
+        toRecipients: [
+          { emailAddress: { address: email } },
+          { emailAddress: { address: "info@swargvatika.org" } },
+          { emailAddress: { address: "msaiprakash3@gmail.com" } }
+        ],
       },
       saveToSentItems: true,
     };
