@@ -1,3 +1,4 @@
+// root/src/pages/PaymentPage.tsx
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,14 +12,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { cn } from "@/lib/utils";
-import { Calendar } from "@/components/ui/calendar";
-import { format } from "date-fns";
-import { CalendarIcon, Clock } from "lucide-react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
@@ -40,8 +33,6 @@ export default function PaymentPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [selectedServices, setSelectedServices] = useState<ServiceData[]>([]);
-  const [serviceDate, setServiceDate] = useState<Date | undefined>(undefined);
-  const [serviceTime, setServiceTime] = useState<string>("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -56,37 +47,19 @@ export default function PaymentPage() {
     "form"
   );
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Available time slots
-  const timeSlots = [
-    "08:00 AM",
-    "09:00 AM",
-    "10:00 AM",
-    "11:00 AM",
-    "12:00 PM",
-    "01:00 PM",
-    "02:00 PM",
-    "03:00 PM",
-    "04:00 PM",
-    "05:00 PM",
-    "06:00 PM",
-    "07:00 PM",
-  ];
-
-  const [paymentMethod, setPaymentMethod] = useState<"card" | "upi">("card"); // ← ADD THIS
+  const [paymentMethod, setPaymentMethod] = useState<"card" | "upi">("card");
 
   // Load selected services from session storage
   useEffect(() => {
     try {
-      const savedServices = sessionStorage.getItem("selectedServices");
-      if (savedServices) {
-        setSelectedServices(JSON.parse(savedServices));
+      const saved = sessionStorage.getItem("selectedServices");
+      if (saved) {
+        setSelectedServices(JSON.parse(saved));
       } else {
-        // Redirect if no services selected
         navigate("/services");
       }
-    } catch (error) {
-      console.error("Error loading selected services:", error);
+    } catch (err) {
+      console.error(err);
       navigate("/services");
     }
   }, [navigate]);
@@ -94,43 +67,30 @@ export default function PaymentPage() {
   // Clean up timer on unmount
   useEffect(() => {
     return () => {
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-      }
+      if (timerRef.current) clearTimeout(timerRef.current);
     };
   }, []);
 
   // Calculate total (GST removed)
-  const calculateTotal = (): number => {
-    return selectedServices.reduce(
-      (total, service) => total + service.price,
-      0
-    );
-  };
+  const calculateTotal = () =>
+    selectedServices.reduce((sum, svc) => sum + svc.price, 0);
 
-  // Handle form input change
+  // Handlers
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((p) => ({ ...p, [name]: value }));
   };
-
-  // Handle checkbox change
   const handleCheckboxChange = (checked: boolean) => {
-    setFormData((prev) => ({ ...prev, agreeTerms: checked }));
+    setFormData((p) => ({ ...p, agreeTerms: checked }));
   };
 
-  // Initialize payment based on payment method selection
   const initializePayment = async () => {
     if (!formData.agreeTerms)
-      return toast({
-        title: "Accept terms to proceed",
-        variant: "destructive",
-      });
+      return toast({ title: "Accept terms to proceed", variant: "destructive" });
     setLoading(true);
     try {
-      // 1) Create order on our server
       const amount = calculateTotal() * 100;
       const orderRes = await fetch(
         "https://swargvatika-trust.onrender.com/api/payment/order",
@@ -147,7 +107,6 @@ export default function PaymentPage() {
       );
       const order = await orderRes.json();
 
-      // 2) Invoke Razorpay Checkout
       const options = {
         key: RAZORPAY_KEY_ID,
         amount: order.amount,
@@ -156,7 +115,6 @@ export default function PaymentPage() {
         description: "Payment for services",
         order_id: order.id,
         handler: async (resp: any) => {
-          // 3) Verify on server
           const verifyRes = await fetch(
             "https://swargvatika-trust.onrender.com/api/payment/verify",
             {
@@ -168,15 +126,9 @@ export default function PaymentPage() {
           const verification = await verifyRes.json();
           if (verification.verified) {
             toast({ title: "Payment Successful" });
-            // persist booking details for invoice page
             sessionStorage.setItem(
               "bookingDetails",
-              JSON.stringify({
-                formData,
-                serviceDate: serviceDate?.toISOString() ?? "",
-                serviceTime,
-                selectedServices,
-              })
+              JSON.stringify({ formData, selectedServices })
             );
             navigate("/success");
           } else {
@@ -201,13 +153,11 @@ export default function PaymentPage() {
 
   return (
     <PageTransition>
-      {/* Page Header */}
       <PageHeader
         title="Complete Your Booking"
         description="Review your selected services and proceed with payment."
       />
 
-      {/* Main Content */}
       <section className="py-16 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <AnimatePresence mode="wait">
@@ -240,7 +190,6 @@ export default function PaymentPage() {
                               required
                             />
                           </div>
-
                           <div className="space-y-2">
                             <Label htmlFor="email">Email Address *</Label>
                             <Input
@@ -267,7 +216,6 @@ export default function PaymentPage() {
                               required
                             />
                           </div>
-
                           <div className="space-y-2">
                             <Label htmlFor="address">Address</Label>
                             <Input
@@ -277,73 +225,6 @@ export default function PaymentPage() {
                               value={formData.address}
                               onChange={handleInputChange}
                             />
-                          </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <div className="space-y-2">
-                            <Label>Service Date *</Label>
-                            <Popover>
-                              <PopoverTrigger asChild>
-                                <Button
-                                  variant="outline"
-                                  className={cn(
-                                    "w-full justify-start text-left font-normal",
-                                    !serviceDate && "text-muted-foreground"
-                                  )}
-                                >
-                                  <CalendarIcon className="mr-2 h-4 w-4" />
-                                  {serviceDate ? (
-                                    format(serviceDate, "PPP")
-                                  ) : (
-                                    <span>Select date</span>
-                                  )}
-                                </Button>
-                              </PopoverTrigger>
-                              <PopoverContent
-                                className="w-auto p-0"
-                                align="start"
-                              >
-                                <Calendar
-                                  mode="single"
-                                  selected={serviceDate}
-                                  onSelect={setServiceDate}
-                                  initialFocus
-                                  disabled={(date) => date < new Date()}
-                                  className={cn("p-3 pointer-events-auto")}
-                                />
-                              </PopoverContent>
-                            </Popover>
-                          </div>
-
-                          <div className="space-y-2">
-                            <Label>Service Time *</Label>
-                            <Select
-                              value={serviceTime}
-                              onValueChange={setServiceTime}
-                            >
-                              <SelectTrigger className="w-full">
-                                <SelectValue placeholder="Select time">
-                                  {serviceTime ? (
-                                    <div className="flex items-center">
-                                      <Clock className="mr-2 h-4 w-4" />
-                                      <span>{serviceTime}</span>
-                                    </div>
-                                  ) : (
-                                    "Select time"
-                                  )}
-                                </SelectValue>
-                              </SelectTrigger>
-                              <SelectContent>
-                                {timeSlots.map((time) => (
-                                  <SelectItem key={time} value={time}>
-                                    <div className="flex items-center">
-                                      <span>{time}</span>
-                                    </div>
-                                  </SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
                           </div>
                         </div>
 
@@ -437,16 +318,18 @@ export default function PaymentPage() {
                       {selectedServices.length > 0 ? (
                         <div className="space-y-4">
                           <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
-                            {selectedServices.map((service, index) => (
+                            {selectedServices.map((service, i) => (
                               <motion.div
                                 key={service.id}
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.1 }}
+                                transition={{ delay: i * 0.1 }}
                                 className="flex justify-between items-center py-2"
                               >
                                 <span>{service.title}</span>
-                                <span>₹{service.price.toLocaleString()}</span>
+                                <span>
+                                  ₹{service.price.toLocaleString()}
+                                </span>
                               </motion.div>
                             ))}
                           </div>
@@ -487,12 +370,12 @@ export default function PaymentPage() {
                                     r="10"
                                     stroke="currentColor"
                                     strokeWidth="4"
-                                  ></circle>
+                                  />
                                   <path
                                     className="opacity-75"
                                     fill="currentColor"
                                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                                  ></path>
+                                  />
                                 </svg>
                                 Processing...
                               </div>
@@ -524,117 +407,6 @@ export default function PaymentPage() {
                     </div>
                   </ScrollReveal>
                 </div>
-              </motion.div>
-            )}
-
-            {paymentStep === "qr" && (
-              <motion.div
-                key="qr"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                className="max-w-md mx-auto text-center bg-white dark:bg-gray-900 rounded-xl p-8 shadow-md"
-              >
-                <h2 className="font-serif text-2xl font-bold mb-4">
-                  Scan to Pay
-                </h2>
-                <p className="text-muted-foreground mb-6">
-                  Please scan the QR code below to complete your payment of ₹
-                  {calculateTotal().toLocaleString()}
-                </p>
-
-                <div className="border-4 border-primary rounded-lg p-2 mb-6 inline-block bg-white">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"
-                    alt="Payment QR Code"
-                    className="w-64 h-64"
-                  />
-                </div>
-
-                <p className="text-sm text-muted-foreground mb-4">
-                  Payment will be auto-verified in 20 seconds
-                </p>
-
-                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mb-4">
-                  <motion.div
-                    className="bg-primary h-2.5 rounded-full"
-                    initial={{ width: "0%" }}
-                    animate={{ width: "100%" }}
-                    transition={{ duration: 30, ease: "linear" }}
-                  />
-                </div>
-              </motion.div>
-            )}
-
-            {paymentStep === "success" && (
-              <motion.div
-                key="success"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                className="max-w-md mx-auto text-center bg-white dark:bg-gray-900 rounded-xl p-8 shadow-md"
-              >
-                {/* Payment success animation and confirmation */}
-                <div className="payment-success mb-6">
-                  <svg
-                    className="checkmark"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 52 52"
-                  >
-                    <circle
-                      className="checkmark-circle"
-                      cx="26"
-                      cy="26"
-                      r="25"
-                      fill="none"
-                    />
-                    <path
-                      className="checkmark-check"
-                      fill="none"
-                      d="M14.1 27.2l7.1 7.2 16.7-16.8"
-                    />
-                  </svg>
-                </div>
-
-                <h2 className="font-serif text-2xl font-bold mb-2">
-                  Payment Successful!
-                </h2>
-                <p className="text-lg text-green-600 font-semibold mb-4">
-                  Your booking is complete and payment has been made in full to
-                  Swargvatika.
-                </p>
-
-                <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 mb-6 text-left">
-                  <h3 className="font-medium mb-2">Booking Details:</h3>
-                  <p className="text-sm mb-1">
-                    <span className="text-muted-foreground">Date:</span>{" "}
-                    {serviceDate ? format(serviceDate, "PPP") : ""}
-                  </p>
-                  <p className="text-sm mb-1">
-                    <span className="text-muted-foreground">Time:</span>{" "}
-                    {serviceTime}
-                  </p>
-                  <p className="text-sm mb-1">
-                    <span className="text-muted-foreground">Services:</span>{" "}
-                    {selectedServices.map((s) => s.title).join(", ")}
-                  </p>
-                  <p className="text-sm">
-                    <span className="text-muted-foreground">Total Amount:</span>{" "}
-                    ₹{calculateTotal().toLocaleString()}
-                  </p>
-                </div>
-
-                <p className="text-sm text-muted-foreground mb-4">
-                  An e-receipt has been sent to your email address:{" "}
-                  {formData.email}
-                </p>
-
-                <Button
-                  onClick={() => navigate("/")}
-                  className="w-full bg-primary hover:bg-primary/90 text-white shimmer-button"
-                >
-                  Return to Home
-                </Button>
               </motion.div>
             )}
           </AnimatePresence>
