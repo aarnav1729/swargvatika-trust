@@ -150,7 +150,6 @@ export default function PaymentPage() {
       setLoading(false);
     }
   };
-
   return (
     <PageTransition>
       <PageHeader
